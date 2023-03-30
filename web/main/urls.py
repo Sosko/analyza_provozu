@@ -1,7 +1,7 @@
 from django.urls import path
 
-from main.views import main_html
+from main.views import main_html, AboutView
 
 urlpatterns = [
-    path("", main_html),
+    path("", AboutView.as_view()),
 ]
