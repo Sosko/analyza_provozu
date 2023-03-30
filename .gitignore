@@ -1,2 +1,6 @@
 db/*
 ./db/*
+web/.idea
+./web/.idea
+web/venv
+./web/venv
