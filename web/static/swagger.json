@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: Analyza provozu
+  description: |-
+    Zatím ve vývoji
+  version: 0.1.0
+servers:
+  - url: http://127.0.0.1:8000/api
+tags:
+  - name: data
+    description: Získání hraničních dat
+paths:
+  /data/available:
+    get:
+      tags:
+        - data
+      summary: Získání typů dat
+      description: Získání listu možných typů dat v databázi
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                properties:
+                  types:
+                    type: array
