@@ -35,3 +35,12 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
+  grafana:
+    image: grafana/grafana:8.5.22
+    depends_on:
+      - postgresql
+    ports:
+      - "3000:3000"
+    volumes:
+     - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+     - ./grafana/data:/var/lib/grafana
