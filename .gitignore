@@ -8,3 +8,4 @@ web/venv
 ./web/venv
 grafana/data
 ./grafana/data
+**/__pycache__
