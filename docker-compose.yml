@@ -1,5 +1,6 @@
 version: "3.9"
 services:
+#################################################
   swagger:
     image: swaggerapi/swagger-ui:v4.18.1
     depends_on:
@@ -8,12 +9,14 @@ services:
       - "8080:8080"
     environment:
       - API_URL=http://127.0.0.1:8000/swagger.json
+#################################################
   swagger-editor:
     image: swaggerapi/swagger-editor:v4.9.0
     ports:
       - "8081:8080"
     environment:
       - API_URL=http://127.0.0.1:8000/swagger.json
+#################################################
   postgresql:
     image: postgres:14.1-alpine
     restart: always
@@ -25,8 +28,10 @@ services:
       - SERVICE_MANAGER= "fsm-postgres"
     volumes:
       - ./db:/var/lib/postgresql/data
-  python-web:
+#################################################
+  web:
     build: .
+    image: my_build
     restart: always
     depends_on:
       - postgresql
@@ -35,6 +40,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
+#################################################
   grafana:
     image: grafana/grafana:8.5.22
     depends_on:
@@ -44,3 +50,25 @@ services:
     volumes:
      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
      - ./grafana/data:/var/lib/grafana
+#################################################
+  migration:
+    image: my_build
+    #command: python manage.py flush
+    #command: python manage.py createsuperuser --username admin --email "admin@admin.com" 
+    command: python manage.py makemigrations --noinput && python manage.py migrate --noinput
+    volumes:
+      - ./web:/var/www
+    depends_on:
+      - postgresql
+#################################################
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8082:80"
+    depends_on:
+      - postgresql

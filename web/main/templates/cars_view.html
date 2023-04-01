@@ -1,0 +1,7 @@
+{% extends "_template.html" %}
+{% block title %}Vozidlo: {{ object.name }} ({{object.id}}){% endblock %}
+{% block title_right %}<a class="btn btn-primary" href="{% url 'car_list' %}">Na výpis</a>{% endblock %}
+{% block content %}
+<p>Vytvořeno: {{ object.create_date|date:'Y-m-d H:i:s u' }}</p>
+<p>Popis: {{ object.description }}</p>
+{% endblock content %}

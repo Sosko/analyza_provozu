@@ -1,0 +1,9 @@
+{% extends "_template.html" %}
+{% block title %}Smazání: {{object.name}}{% endblock %}
+{% block title_right %}<a class="btn btn-primary" href="{% url 'upload_list' %}">Zpět na list</a>{% endblock %}
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
+{% endblock %}

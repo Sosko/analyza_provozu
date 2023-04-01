@@ -1,5 +1,9 @@
 {% extends "_template.html" %}
 {% block title %}Náhrání nových dat{% endblock %}
 {% block content %}
-{{ form }}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Upload</button>
+</form>
 {% endblock %}

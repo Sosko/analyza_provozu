@@ -1,0 +1,7 @@
+{% extends "_template.html" %}
+{% block title %}Upload: {{ object.name }} ({{object.id}}){% endblock %}
+{% block title_right %}<a class="btn btn-primary" href="{% url 'upload_list' %}">Na výpis</a>{% endblock %}
+{% block content %}
+<p>Nahráno: {{ object.upload_date|date:'Y-m-d H:i:s u' }}</p>
+<a href="{% url 'upload_parse' object.id%}">Parsování</a>
+{% endblock content %}

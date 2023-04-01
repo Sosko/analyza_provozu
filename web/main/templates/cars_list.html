@@ -1,0 +1,20 @@
+{% extends "_template.html" %}
+{% block title %}Vozidla{% endblock %}
+{% block title_right %}<a class="btn btn-primary" href="{% url 'car_new' %}">Přidat nový</a>{% endblock %}
+{% block content %}
+<table class="table">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <tr>
+        <td><a href="{% url 'car' object.id%}">{{ object.name }}</a></td>
+        <td class="text-end"><a class="btn btn-danger" href="{% url 'car_delete' object.id%}">Smazat</a></td>
+    </tr>
+    <!-- If object_list is empty  -->
+    {% empty %}
+    <tr>
+        <td>No objects yet.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

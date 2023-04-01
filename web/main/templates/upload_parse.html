@@ -1,0 +1,22 @@
+{% extends "_template.html" %}
+{% block title %}Upload: {{ object.name }} ({{object.id}}){% endblock %}
+{% block title_right %}<a class="btn btn-primary" href="{% url 'upload_list' %}">Na výpis</a>{% endblock %}
+{% block content %}
+<table class="table">
+    <thead>
+    <tr>
+        {% for types in data %}
+        <td>{{types}}</td>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for t in data.position %}
+    <tr>
+        <td>{{t}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+{% endblock content %}

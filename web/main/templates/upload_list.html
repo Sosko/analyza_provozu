@@ -1,0 +1,21 @@
+{% extends "_template.html" %}
+{% block title %}List nahraných dat{% endblock %}
+{% block title_right %}<a class="btn btn-primary" href="{% url 'upload_new' %}">Přidat nový</a>{% endblock %}
+{% block content %}
+<table class="table">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <tr>
+        <td><a href="{% url 'upload' object.id%}">{{ object.name }}</a></td>
+        <td class="text-end"><a class="btn btn-danger" href="{% url 'upload_delete' object.id%}">Smazat</a></td>
+    </tr>
+    <!-- If object_list is empty  -->
+    {% empty %}
+    <tr>
+        <td>No objects yet.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+#https://docs.djangoproject.com/en/4.1/topics/pagination/

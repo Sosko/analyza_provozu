@@ -2,11 +2,15 @@
     <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'upload_file' %}">
-                    Nahrát záznam
+                <a class="nav-link" aria-current="page" href="{% url 'upload_list' %}">
+                    Nahrané záznamy
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'car_list' %}">
+                    Vozidla
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
