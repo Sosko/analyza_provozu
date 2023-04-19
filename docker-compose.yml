@@ -55,7 +55,9 @@ services:
     image: my_build
     #command: python manage.py flush
     #command: python manage.py createsuperuser --username admin --email "admin@admin.com" 
-    command: python manage.py makemigrations --noinput && python manage.py migrate --noinput
+    command: >
+      sh -c "python manage.py makemigrations
+      && python manage.py migrate"
     volumes:
       - ./web:/var/www
     depends_on:

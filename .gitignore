@@ -6,5 +6,5 @@ web/.idea
 ./web/.idea
 web/venv
 ./web/venv
-**/__pycache__
+**/__pycache__/
 web/writable/*
